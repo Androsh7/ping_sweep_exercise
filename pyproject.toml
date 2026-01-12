@@ -1,0 +1,27 @@
+[project]
+name = "ping_sweep_exercise"
+version = "0.1.0"
+description = "Python programming exercise to create a python ping sweeper"
+requires-python = ">=3.13"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "pylint",
+]
+
+[tool.black]
+line-length = 120
+target-version = ["py313"]
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.pylint.main]
+ignore = [".venv", ".conda", "build"]
+py-version = "3.13"
+
+[tool.pylint.format]
+max-line-length = 120
