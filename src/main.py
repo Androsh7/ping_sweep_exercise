@@ -7,8 +7,8 @@ from pathlib import Path
 # Project libraries
 from ping import parse_ip_list, ping_range
 from utils import (
-    read_ip_list_from_json_file,
     read_ip_list_from_csv_file,
+    read_ip_list_from_json_file,
     read_ip_list_from_text_file,
     save_results_to_csv,
     save_results_to_json,
@@ -40,7 +40,7 @@ def main():
     args = parser.parse_args()
     if args.input and args.ping:
         parser.error("Cannot use --input and --ping together. Please choose one.")
-    
+
     # Grab the input
     if args.ping:
         ip_set = parse_ip_list(args.ping)
@@ -73,6 +73,7 @@ def main():
         print("---- Ping Sweep Complete ----")
         print(f"Reached {len(reachable_ips)}/{len(ip_set)} IP addresses:")
         print(f' - {", ".join(map(str, reachable_ips))}')
+
 
 if __name__ == "__main__":
     main()

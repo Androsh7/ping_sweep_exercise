@@ -2,15 +2,11 @@
 
 # Standard libraries
 import platform
-import re
 import subprocess
-from ipaddress import IPv4Address, IPv4Network
+from ipaddress import IPv4Address
 
 # Third-party libraries
 from tqdm import tqdm
-
-# Project libraries
-from utils import parse_ip_list
 
 
 def ping(ip: IPv4Address) -> bool:

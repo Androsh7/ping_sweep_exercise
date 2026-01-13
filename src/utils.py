@@ -4,9 +4,8 @@
 import csv
 import json
 import re
-from pathlib import Path
 from ipaddress import IPv4Address, IPv4Network
-
+from pathlib import Path
 
 IP_REGEX = r"(\d{1,3}\.){3}\d{1,3}"
 IP_RANGE_REGEX = rf"{IP_REGEX}-{IP_REGEX}"
@@ -71,6 +70,7 @@ def save_results_to_json(reachable_ips: set[IPv4Address], all_ips: set[IPv4Addre
     with open(file=output_file, mode="w", encoding="utf-8") as json_file:
         json.dump(results, json_file, indent=4)
 
+
 def save_results_to_text(reachable_ips: set[IPv4Address], all_ips: set[IPv4Address], output_file: Path):
     """Saves reachable IP addresses to a text file
 
@@ -82,6 +82,7 @@ def save_results_to_text(reachable_ips: set[IPv4Address], all_ips: set[IPv4Addre
     with open(file=output_file, mode="w", encoding="utf-8") as text_file:
         for ip in sorted(all_ips):
             text_file.write(f'{ip} is {"reachable" if ip in reachable_ips else "not reachable"}\n')
+
 
 def read_ip_list_from_text_file(input_file: Path) -> set[IPv4Address]:
     """Reads an IP address list from a text file
@@ -99,6 +100,7 @@ def read_ip_list_from_text_file(input_file: Path) -> set[IPv4Address]:
                 continue
             ip_list_str += line.strip() + ","
     return parse_ip_list(ip_list_str.rstrip(","))
+
 
 def read_ip_list_from_csv_file(input_file: Path) -> set[IPv4Address]:
     """Reads an IP address list from a csv file
