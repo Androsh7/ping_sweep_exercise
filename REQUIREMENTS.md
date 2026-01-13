@@ -29,7 +29,7 @@ Create a python application that can ping a range of hosts, the application shou
 - Add an argument to optionally write the output to a file in a specified format (csv, json, and text)
 - Add a progress bar or progress indicator
 
-## Advanced
+## Advanced requirements
 
 - All beginner and intermediate requirements
 - OS cross-compatibility (Linux and Windows)
