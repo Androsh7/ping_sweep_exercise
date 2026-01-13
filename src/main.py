@@ -4,7 +4,7 @@
 import argparse
 
 # Project libraries
-from ping import ping_range
+from ping import parse_ip_list, ping_range
 
 PROGRAM_NAME = "Ping Sweeper"
 VERSION = "0.1.0"
@@ -17,7 +17,8 @@ def main():
     parser.add_argument("-v", "-version", action="version", version=f"{PROGRAM_NAME} v{VERSION}")
     args = parser.parse_args()
     if args.ping:
-        ping_range(args.ping)
+        ip_set = parse_ip_list(args.ping)
+        ping_range(ip_set)
 
 
 if __name__ == "__main__":
