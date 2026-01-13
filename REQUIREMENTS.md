@@ -22,12 +22,12 @@ Create a python application that can ping a range of hosts, the application shou
 
 ## Intermediate requirements
 
-- All beginner requirements
-- `--ping` argument should be able to accept a mix of individual IPs, IP ranges, and IP networks, I.E: `--ping 192.168.1.1,1.0.0.1-1.0.0.255,127.0.0.1/24`
-- Remove duplicates in `--ping input`
-- Add an argument to optionally read a list of IP addresses from a file (csv, json, and text)
-- Add an argument to optionally write the output to a file in a specified format (csv, json, and text)
-- Add a progress bar or progress indicator
+- ~~All beginner requirements~~
+- ~~`--ping` argument should be able to accept a mix of individual IPs, IP ranges, and IP networks, I.E: `--ping 192.168.1.1,1.0.0.1-1.0.0.255,127.0.0.1/24`~~
+- ~~Remove duplicates in `--ping input`~~
+- ~~Add an argument to optionally read a list of IP addresses from a file (csv, json, and text)~~
+- ~~Add an argument to optionally write the output to a file in a specified format (csv, json, and text)~~
+- ~~Add a progress bar or progress indicator~~
 
 ## Advanced requirements
 
