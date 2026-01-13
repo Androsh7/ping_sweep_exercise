@@ -7,7 +7,7 @@ import argparse
 from ping import ping_range
 
 PROGRAM_NAME = "Ping Sweeper"
-VERSION = "0.1.0"
+VERSION = "0.0.0"
 
 
 def main():
