@@ -15,10 +15,10 @@ Create a python application that can ping a range of hosts, the application shou
 ## Beginner requirements
 
 - ~~Program requires an interface (CLI interface is sufficient)~~ (This has already been done)
-- `--ping` argument should be able to accept a list of IP address, I.E: `--ping 192.168.1.1,127.0.0.1,1.1.1.1`
-- `--ping` argument should be able to accept a range of IP addresses, I.E: `--ping 127.0.0.1-127.0.0.255`
-- `--ping` argument should be able to accept a network as an argument, I.E: `--ping 127.0.0.1/23`
-- Scanner should return a summary including: total targets, reachable count, and list of reachable hosts
+- ~~`--ping` argument should be able to accept a list of IP address, I.E: `--ping 192.168.1.1,127.0.0.1,1.1.1.1`~~
+- ~~`--ping` argument should be able to accept a range of IP addresses, I.E: `--ping 127.0.0.1-127.0.0.255`~~
+- ~~`--ping` argument should be able to accept a network as an argument, I.E: `--ping 127.0.0.1/23`~~
+- ~~Scanner should return a summary including: total targets, reachable count, and list of reachable hosts~~
 
 ## Intermediate requirements
 
