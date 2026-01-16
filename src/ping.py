@@ -7,8 +7,25 @@ import subprocess
 from ipaddress import IPv4Address
 
 # Third-party libraries
+from attrs import define, field, validators
 from loguru import logger
+from tqdm import tqdm
 
+
+@define
+class PingProgress:
+    """Progress tracking for ping operations"""
+    total: int = field(validator=validators.and_(validators.instance_of(int), validators.gt(0)))
+    _lock: asyncio.Lock = field(factory=asyncio.Lock, init=False)
+    _progress_bar: tqdm = field(validator=validators.instance_of(tqdm), init=False)
+
+    def __attrs_post_init__(self):
+        self._progress_bar = tqdm(total=self.total, desc="Pinging", unit="IP")
+    
+    async def update(self):
+        """Increment the progress by one"""
+        async with self._lock:
+            self._progress_bar.update(1)
 
 async def ping(ip: IPv4Address, timeout_ms: int) -> bool:
     """Pings an IP address and returns the result
@@ -29,7 +46,7 @@ async def ping(ip: IPv4Address, timeout_ms: int) -> bool:
     await process.wait()
     return process.returncode == 0
 
-async def ping_worker(name: str, ip_queue: asyncio.Queue, reachable_ips: list, timeout_ms: int):
+async def ping_worker(name: str, ip_queue: asyncio.Queue, reachable_ips: list, timeout_ms: int, progress: PingProgress):
     """Worker to ping IP addresses from the queue
 
     Args:
@@ -42,6 +59,7 @@ async def ping_worker(name: str, ip_queue: asyncio.Queue, reachable_ips: list, t
             if await ping(ip, timeout_ms=timeout_ms):
                 logger.trace("{} - {} is reachable", name, ip)
                 reachable_ips.append(ip)
+            await progress.update()
             ip_queue.task_done()
     except asyncio.CancelledError:
         pass
@@ -59,10 +77,13 @@ async def ping_range(ip_set: set[IPv4Address], worker_count: int, timeout_ms: in
     ip_queue = asyncio.Queue()
     reachable_ips = []
 
+    # Initialize progress tracking
+    progress = PingProgress(total=len(ip_set))
+
     # Build workers
     workers = []
     for i in range(1, worker_count + 1):
-        workers.append(asyncio.create_task(ping_worker(name=f"worker-{i}", ip_queue=ip_queue, reachable_ips=reachable_ips, timeout_ms=timeout_ms)))
+        workers.append(asyncio.create_task(ping_worker(name=f"worker-{i}", ip_queue=ip_queue, reachable_ips=reachable_ips, timeout_ms=timeout_ms, progress=progress)))
     logger.debug("Started {} workers", worker_count)
 
     # Add IPs to queue

@@ -4,7 +4,9 @@ version = "0.3.0"
 description = "A program to ping a range of IP addresses"
 requires-python = ">=3.13"
 dependencies = [
+    "attrs",
     "loguru",
+    "tqdm",
 ]
 
 [project.optional-dependencies]

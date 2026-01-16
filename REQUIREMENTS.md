@@ -33,6 +33,6 @@ Create a python application that can ping a range of hosts, the application shou
 
 - ~~All beginner and intermediate requirements~~
 - ~~OS cross-compatibility (Linux and Windows)~~
-- Run pings simultaneously
-- Add arguments to adjust concurrency and timeout
+- ~~Run pings simultaneously~~
+- ~~Add arguments to adjust concurrency and timeout~~
 - Implement unit tests (80% coverage)
