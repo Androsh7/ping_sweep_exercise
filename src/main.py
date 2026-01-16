@@ -1,12 +1,18 @@
 """Main logic"""
 
 # Standard libraries
+import asyncio
 import argparse
+import sys
 from pathlib import Path
 
+# Third-party libraries
+from loguru import logger
+
 # Project libraries
-from ping import parse_ip_list, ping_range
+from ping import ping_range
 from utils import (
+    parse_ip_list,
     read_ip_list_from_csv_file,
     read_ip_list_from_json_file,
     read_ip_list_from_text_file,
@@ -16,10 +22,10 @@ from utils import (
 )
 
 PROGRAM_NAME = "Ping Sweeper"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 
 
-def main():
+async def main():
     """Main function"""
     parser = argparse.ArgumentParser(prog=PROGRAM_NAME, description="A python program to ping a range of IP addresses")
     parser.add_argument("--ping", "-p", type=str, help="The range of IP addresses to scan")
@@ -37,7 +43,15 @@ def main():
         help="The output file format",
     )
     parser.add_argument("-v", "-version", action="version", version=f"{PROGRAM_NAME} v{VERSION}")
+    parser.add_argument("--workers", "-w", type=int, default=50, help="The number of concurrent workers (default: 50)")
+    parser.add_argument("--timeout", "-t", type=int, default=1000, help="The ping timeout in milliseconds (default: 1000 ms)")
+    parser.add_argument("--log-level", "-ll", type=str, choices=["TRACE", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"], default="INFO", help="Set the logging level (default: INFO)")
     args = parser.parse_args()
+
+    # Set logging level
+    logger.remove()
+    logger.add(sink=sys.stderr, level=args.log_level)
+
     if args.input and args.ping:
         parser.error("Cannot use --input and --ping together. Please choose one.")
 
@@ -57,7 +71,7 @@ def main():
         parser.error("No input provided. Please use --ping or --input to provide IP addresses.")
 
     # Ping the IPs
-    reachable_ips = ping_range(ip_set)
+    reachable_ips = await ping_range(ip_set, worker_count=args.workers, timeout_ms=args.timeout)
 
     # Return the output
     if args.output:
@@ -76,4 +90,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

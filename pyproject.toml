@@ -1,10 +1,10 @@
 [project]
 name = "ping_sweeper"
-version = "0.2.0"
+version = "0.3.0"
 description = "A program to ping a range of IP addresses"
 requires-python = ">=3.13"
 dependencies = [
-    "tqdm",
+    "loguru",
 ]
 
 [project.optional-dependencies]
