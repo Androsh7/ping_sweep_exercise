@@ -14,7 +14,11 @@ dev = [
     "black",
     "isort",
     "pylint",
+    "pytest",
 ]
+
+[tool.setuptools]
+packages = ["src"]
 
 [tool.black]
 line-length = 120
