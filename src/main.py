@@ -1,8 +1,8 @@
 """Main logic"""
 
 # Standard libraries
-import asyncio
 import argparse
+import asyncio
 import sys
 from pathlib import Path
 
@@ -44,8 +44,17 @@ async def main():
     )
     parser.add_argument("-v", "-version", action="version", version=f"{PROGRAM_NAME} v{VERSION}")
     parser.add_argument("--workers", "-w", type=int, default=50, help="The number of concurrent workers (default: 50)")
-    parser.add_argument("--timeout", "-t", type=int, default=1000, help="The ping timeout in milliseconds (default: 1000 ms)")
-    parser.add_argument("--log-level", "-ll", type=str, choices=["TRACE", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"], default="INFO", help="Set the logging level (default: INFO)")
+    parser.add_argument(
+        "--timeout", "-t", type=int, default=1000, help="The ping timeout in milliseconds (default: 1000 ms)"
+    )
+    parser.add_argument(
+        "--log-level",
+        "-ll",
+        type=str,
+        choices=["TRACE", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        default="INFO",
+        help="Set the logging level (default: INFO)",
+    )
     args = parser.parse_args()
 
     # Set logging level
