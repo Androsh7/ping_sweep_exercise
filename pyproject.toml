@@ -15,6 +15,7 @@ dev = [
     "isort",
     "pylint",
     "pytest",
+    "pytest-asyncio",
 ]
 
 [tool.setuptools]

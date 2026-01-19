@@ -8,7 +8,7 @@ import csv
 import json
 
 # Project libraries
-from src.utils import save_results_to_csv, save_results_to_json, save_results_to_text, read_ip_list_from_csv_file, read_ip_list_from_json_file, read_ip_list_from_text_file
+from src.utils import save_results_to_csv, save_results_to_json, save_results_to_text, read_ip_list_from_csv_file, read_ip_list_from_json_file, read_ip_list_from_text_file, parse_ip_list
 
 TEST_DIRECTORY = Path(__file__).parent
 ALL_IPS = set(IPv4Network("127.0.0.0/16").hosts())
@@ -100,3 +100,9 @@ def test_text_output():
 
     save_results_to_text(reachable_ips=REACHABLE_IPS, all_ips=ALL_IPS, output_file=output_file_path)
     os.remove(output_file_path)
+
+def test_ip_parser():
+    ip_addresses = ["1.1.1.1", "1.1.1.2", "1.1.1.3", "1.1.1.4", "4.4.4.4"]
+    ip_addresses.extend(list(map(str, IPv4Network("127.0.0.0/24").hosts())))
+    result_ip_list = parse_ip_list("1.1.1.1-1.1.1.4,4.4.4.4,127.0.0.0/24")
+    assert ip_addresses.sort() == list(map(str, result_ip_list)).sort()
