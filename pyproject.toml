@@ -28,3 +28,6 @@ max-line-length = 120
 [tool.pylint.main]
 ignore = [".venv", ".conda", "build"]
 py-version = "3.13"
+
+[tool.setuptools]
+packages = ["ping_sweeper"]
