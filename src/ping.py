@@ -1,5 +1,6 @@
 """Logic for ping sweeping"""
 
+
 def ping_range(ip_range: str):
     """Pings an IP address range
 

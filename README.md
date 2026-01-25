@@ -15,23 +15,9 @@ This is an exercise to create a python program capable of pinging a range of hos
 
 ## Dev Utilities
 
-### Black
+### Ruff
 
-This is a commandline utility that automatically formats your python code
-
-```
-black . # Format whole repo
-black main.py # Format a specific file
-```
-
-### Isort
-
-This organizes all of your imports in alphabetical order
-
-```
-isort . # Format whole repo
-isort main.py # Format a specific file
-```
+Ruff is a high speed linter and formatter written in rust. Running `ruff format .` normalizes the formatting of your code (similar to black), while `ruff check . --fix` applies suggestions (pyflakes, isort, pyupgrade, etc).
 
 ### Pylint
 

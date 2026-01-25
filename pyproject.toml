@@ -6,22 +6,24 @@ requires-python = ">=3.13"
 
 [project.optional-dependencies]
 dev = [
-    "black",
-    "isort",
+    "ruff",
     "pylint",
 ]
 
-[tool.black]
+[tool.ruff]
+target-version = "py313"
 line-length = 120
-target-version = ["py313"]
+select = [
+    "E", # Pycodestyle errors
+    "F", # Pyflakes
+    "I", # Isort
+    "PL", # Pylint
+    "UP", # Pyupgrade
+]
 
-[tool.isort]
-profile = "black"
-line_length = 120
+[tool.pylint.format]
+max-line-length = 120
 
 [tool.pylint.main]
 ignore = [".venv", ".conda", "build"]
 py-version = "3.13"
-
-[tool.pylint.format]
-max-line-length = 120

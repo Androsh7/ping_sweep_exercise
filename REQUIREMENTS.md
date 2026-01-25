@@ -8,7 +8,7 @@ Create a python application that can ping a range of hosts, the application shou
 - Project should comply with [Semantic Versioning 2.0.0](https://semver.org/)
 - Project should include a [changelog](https://keepachangelog.com/en/1.1.0/)
 - Project should have a descriptive README.md including how to build, run, and use the tool
-- Project should comply with black and isort formatting
+- Project should comply with ruff formatting
 - Project should pass pylint linting with a score of at least 8
 - All third-party libraries should be included in the pyproject.toml
 
