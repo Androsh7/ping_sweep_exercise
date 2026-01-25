@@ -8,7 +8,7 @@ Create a python application that can ping a range of hosts, the application shou
 - Project should comply with [Semantic Versioning 2.0.0](https://semver.org/)
 - Project should include a [changelog](https://keepachangelog.com/en/1.1.0/)
 - Project should have a descriptive README.md including how to build, run, and use the tool
-- Project should comply with ruff formatting
+- Project should comply with ruff formatting and linting suggestions
 - Project should pass pylint linting with a score of at least 8
 - All third-party libraries should be included in the pyproject.toml
 
@@ -24,7 +24,7 @@ Create a python application that can ping a range of hosts, the application shou
 
 - All beginner requirements
 - `--ping` argument should be able to accept a mix of individual IPs, IP ranges, and IP networks, I.E: `--ping 192.168.1.1,1.0.0.1-1.0.0.255,127.0.0.1/24`
-- Remove duplicates in `--ping input`
+- Remove duplicate IPs before scanning
 - Add an argument to optionally read a list of IP addresses from a file (csv, json, and text)
 - Add an argument to optionally write the output to a file in a specified format (csv, json, and text)
 - Add a progress bar or progress indicator
