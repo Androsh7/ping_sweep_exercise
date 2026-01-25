@@ -1,0 +1,33 @@
+[project]
+name = "ping_sweep_exercise"
+version = "0.0.0"
+description = "Python programming exercise to create a python ping sweeper"
+requires-python = ">=3.13"
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pylint",
+    "pytest",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+select = [
+    "E", # Pycodestyle errors
+    "F", # Pyflakes
+    "I", # Isort
+    "PL", # Pylint
+    "UP", # Pyupgrade
+]
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint.main]
+ignore = [".venv", ".conda", "build"]
+py-version = "3.13"
+
+[tool.setuptools]
+packages = ["ping_sweeper"]
