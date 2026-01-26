@@ -81,7 +81,7 @@ def save_results_to_text(reachable_ips: set[IPv4Address], all_ips: set[IPv4Addre
     """
     with open(file=output_file, mode="w", encoding="utf-8") as text_file:
         for ip in sorted(all_ips):
-            text_file.write(f'{ip} is {"reachable" if ip in reachable_ips else "not reachable"}\n')
+            text_file.write(f"{ip} is {'reachable' if ip in reachable_ips else 'not reachable'}\n")
 
 
 def read_ip_list_from_text_file(input_file: Path) -> set[IPv4Address]:
@@ -94,7 +94,7 @@ def read_ip_list_from_text_file(input_file: Path) -> set[IPv4Address]:
         A set of IPv4 addresses to ping
     """
     ip_list_str = ""
-    with open(file=input_file, mode="r", encoding="utf-8") as text_file:
+    with open(file=input_file, encoding="utf-8") as text_file:
         for line in text_file.readlines():
             if line.startswith("#") or not line.strip():
                 continue
@@ -112,7 +112,7 @@ def read_ip_list_from_csv_file(input_file: Path) -> set[IPv4Address]:
         A set of IPv4 addresses to ping
     """
     ip_list_str = ""
-    with open(file=input_file, mode="r", encoding="utf-8") as csv_file:
+    with open(file=input_file, encoding="utf-8") as csv_file:
         reader = csv.reader(csv_file)
         # Skip header
         next(reader)
@@ -131,7 +131,7 @@ def read_ip_list_from_json_file(input_file: Path) -> set[IPv4Address]:
         A set of IPv4 addresses to ping
     """
     ip_list_str = ""
-    with open(file=input_file, mode="r", encoding="utf-8") as json_file:
+    with open(file=input_file, encoding="utf-8") as json_file:
         data = json.load(json_file)
         for ip in data:
             ip_list_str += ip.strip() + ","
