@@ -10,8 +10,8 @@ from pathlib import Path
 from loguru import logger
 
 # Project libraries
-from ping import ping_range
-from utils import (
+from ping_sweeper.ping import ping_range
+from ping_sweeper.utils import (
     parse_ip_list,
     read_ip_list_from_csv_file,
     read_ip_list_from_json_file,
@@ -95,7 +95,7 @@ async def main():
     else:
         print("---- Ping Sweep Complete ----")
         print(f"Reached {len(reachable_ips)}/{len(ip_set)} IP addresses:")
-        print(f' - {", ".join(map(str, reachable_ips))}')
+        print(f" - {', '.join(map(str, reachable_ips))}")
 
 
 if __name__ == "__main__":

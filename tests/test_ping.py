@@ -2,7 +2,6 @@
 
 # Standard libraries
 import asyncio
-from asyncio import Queue
 from ipaddress import IPv4Address
 
 import pytest

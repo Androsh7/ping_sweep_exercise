@@ -45,7 +45,7 @@ def test_csv_output():
     # Read data from CSV file
     all_ips_from_file = []
     reachable_ips_from_file = []
-    with open(file=output_file_path, mode="r", encoding="utf-8") as output_file:
+    with open(file=output_file_path, encoding="utf-8") as output_file:
         reader = csv.reader(output_file.readlines())
         next(reader)  # Skip header
         for row in reader:
@@ -78,7 +78,7 @@ def test_json_output():
     save_results_to_json(reachable_ips=REACHABLE_IPS, all_ips=ALL_IPS, output_file=output_file_path)
 
     # Read data from output file
-    with open(file=output_file_path, mode="r", encoding="utf-8") as output_file:
+    with open(file=output_file_path, encoding="utf-8") as output_file:
         data_from_file = json.load(output_file)
     all_ips_from_file = []
     reachable_ips_from_file = []
