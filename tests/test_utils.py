@@ -8,7 +8,7 @@ from ipaddress import IPv4Address, IPv4Network
 from pathlib import Path
 
 # Project libraries
-from src.utils import (
+from ping_sweeper.utils import (
     parse_ip_list,
     read_ip_list_from_csv_file,
     read_ip_list_from_json_file,

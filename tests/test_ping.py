@@ -7,7 +7,7 @@ from ipaddress import IPv4Address
 import pytest
 
 # Project libraries
-from src.ping import ping, ping_range, ping_worker
+from ping_sweeper.ping import ping, ping_range, ping_worker
 
 
 class MockProgressBar:
