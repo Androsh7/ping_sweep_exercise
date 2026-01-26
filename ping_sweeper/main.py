@@ -4,7 +4,7 @@
 import argparse
 
 # Project libraries
-from ping import parse_ip_list, ping_range
+from ping_sweeper.ping import parse_ip_list, ping_range
 
 PROGRAM_NAME = "Ping Sweeper"
 VERSION = "0.1.0"
